@@ -1,0 +1,27 @@
+Author: Patrick Furbert
+Date: Sat Nov  3 10:37:30 EDT 2018
+Problem: rasberrypi
+
+
+This application utlizes several standard libraries(iostream, algorithm, string, and SFML)
+
+SFML is a seperate library and when you use g++ to compile with it, you need to compile the program in a certain way. I put SFML in a non-standard path. 
+
+g++ -c main.cpp -I<sfml-full-install-path>/include 
+(sfml-install-path is the directory where you copied SFML)
+
+
+Then you have to link the compiled file to the SFML libraries to get the final executable. SFML is made of 5 modules(system, window, graphics, network and audio)
+
+g++ main.o -o main-sfml-app -L<sfml-full-install-path>/lib -lsfml-audio -lsfml-system 
+
+lastly you can execute the app with ./main-sfml-app or in my case, i installed SFML to non standard path, therefore you must execute the following command
+
+export LD_LIBRARY_PATH=<sfml-full-install-path>/lib && ./main-sfml-app
+
+
+export is a command that changes an environmental variable and passes it to a program
+
+
+To find out more about SFML visit 
+https://www.sfml-dev.org/index.php
