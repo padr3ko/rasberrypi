@@ -29,11 +29,14 @@ int main(int argc, char *argv[]){
 	std::cout << "Enter text that you would like to be translated:\n";
 
 	//store users input into variable
-	std::cin >> textToTranslate;
+	std::getline(std::cin, textToTranslate); //use this instead of cin because the >> operator used with cin breaks on white space and won't get the whole line
 
 
 	//converts to lowercase
 	std::transform(textToTranslate.begin(), textToTranslate.end(), textToTranslate.begin(), ::tolower);
+
+	std::cout << "You entered: " <<textToTranslate <<"\n";
+
 
 	//print out result of translation to user
 	std::cout << "Morse Code Translation: " <<translate(textToTranslate) <<"\n";
